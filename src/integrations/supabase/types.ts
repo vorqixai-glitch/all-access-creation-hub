@@ -181,6 +181,48 @@ export type Database = {
         }
         Relationships: []
       }
+      skills_catalog: {
+        Row: {
+          category: string
+          config_schema: Json
+          created_at: string
+          description: string
+          icon: string | null
+          id: string
+          is_official: boolean
+          name: string
+          provider: string | null
+          slug: string
+          updated_at: string
+        }
+        Insert: {
+          category: string
+          config_schema?: Json
+          created_at?: string
+          description: string
+          icon?: string | null
+          id?: string
+          is_official?: boolean
+          name: string
+          provider?: string | null
+          slug: string
+          updated_at?: string
+        }
+        Update: {
+          category?: string
+          config_schema?: Json
+          created_at?: string
+          description?: string
+          icon?: string | null
+          id?: string
+          is_official?: boolean
+          name?: string
+          provider?: string | null
+          slug?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       threads: {
         Row: {
           created_at: string
@@ -258,6 +300,44 @@ export type Database = {
           user_id?: string
         }
         Relationships: []
+      }
+      user_skills: {
+        Row: {
+          config: Json
+          created_at: string
+          enabled: boolean
+          id: string
+          skill_id: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          config?: Json
+          created_at?: string
+          enabled?: boolean
+          id?: string
+          skill_id: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          config?: Json
+          created_at?: string
+          enabled?: boolean
+          id?: string
+          skill_id?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "user_skills_skill_id_fkey"
+            columns: ["skill_id"]
+            isOneToOne: false
+            referencedRelation: "skills_catalog"
+            referencedColumns: ["id"]
+          },
+        ]
       }
     }
     Views: {
