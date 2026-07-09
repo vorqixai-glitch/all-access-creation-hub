@@ -170,13 +170,18 @@ export function ChatShell({ threadId }: { threadId: string }) {
             <p className="text-xs text-muted-foreground text-center py-6">No chats yet</p>
           )}
         </div>
-        <div className="p-2 border-t border-sidebar-border flex gap-1">
-          <Button variant="ghost" size="sm" className="flex-1 justify-start" asChild>
-            <Link to="/settings"><Settings className="w-4 h-4 mr-2" /> Settings</Link>
+        <div className="p-2 border-t border-sidebar-border flex flex-col gap-1">
+          <Button variant="ghost" size="sm" className="justify-start" asChild>
+            <Link to="/skills"><Puzzle className="w-4 h-4 mr-2" /> Skills & Plugins</Link>
           </Button>
-          <Button variant="ghost" size="sm" onClick={signOut} aria-label="Sign out">
-            <LogOut className="w-4 h-4" />
-          </Button>
+          <div className="flex gap-1">
+            <Button variant="ghost" size="sm" className="flex-1 justify-start" asChild>
+              <Link to="/settings"><Settings className="w-4 h-4 mr-2" /> Settings</Link>
+            </Button>
+            <Button variant="ghost" size="sm" onClick={signOut} aria-label="Sign out">
+              <LogOut className="w-4 h-4" />
+            </Button>
+          </div>
         </div>
       </aside>
 
