@@ -14,6 +14,102 @@ export type Database = {
   }
   public: {
     Tables: {
+      marketplace_items: {
+        Row: {
+          author_id: string
+          category: string
+          content: Json
+          created_at: string
+          description: string
+          id: string
+          install_count: number
+          kind: Database["public"]["Enums"]["marketplace_kind"]
+          published: boolean
+          slug: string
+          tags: string[]
+          title: string
+          updated_at: string
+          view_count: number
+        }
+        Insert: {
+          author_id: string
+          category?: string
+          content?: Json
+          created_at?: string
+          description?: string
+          id?: string
+          install_count?: number
+          kind: Database["public"]["Enums"]["marketplace_kind"]
+          published?: boolean
+          slug: string
+          tags?: string[]
+          title: string
+          updated_at?: string
+          view_count?: number
+        }
+        Update: {
+          author_id?: string
+          category?: string
+          content?: Json
+          created_at?: string
+          description?: string
+          id?: string
+          install_count?: number
+          kind?: Database["public"]["Enums"]["marketplace_kind"]
+          published?: boolean
+          slug?: string
+          tags?: string[]
+          title?: string
+          updated_at?: string
+          view_count?: number
+        }
+        Relationships: []
+      }
+      marketplace_ratings: {
+        Row: {
+          created_at: string
+          id: string
+          item_id: string
+          rating: number
+          review: string | null
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          item_id: string
+          rating: number
+          review?: string | null
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          item_id?: string
+          rating?: number
+          review?: string | null
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "marketplace_ratings_item_id_fkey"
+            columns: ["item_id"]
+            isOneToOne: false
+            referencedRelation: "marketplace_items"
+            referencedColumns: ["id"]
+          },
+          {
+            foreignKeyName: "marketplace_ratings_item_id_fkey"
+            columns: ["item_id"]
+            isOneToOne: false
+            referencedRelation: "marketplace_items_with_stats"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       messages: {
         Row: {
           created_at: string
@@ -165,7 +261,27 @@ export type Database = {
       }
     }
     Views: {
-      [_ in never]: never
+      marketplace_items_with_stats: {
+        Row: {
+          author_id: string | null
+          avg_rating: number | null
+          category: string | null
+          content: Json | null
+          created_at: string | null
+          description: string | null
+          id: string | null
+          install_count: number | null
+          kind: Database["public"]["Enums"]["marketplace_kind"] | null
+          published: boolean | null
+          rating_count: number | null
+          slug: string | null
+          tags: string[] | null
+          title: string | null
+          updated_at: string | null
+          view_count: number | null
+        }
+        Relationships: []
+      }
     }
     Functions: {
       has_role: {
@@ -178,6 +294,7 @@ export type Database = {
     }
     Enums: {
       app_role: "admin" | "creator" | "user"
+      marketplace_kind: "template" | "plugin" | "agent"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -306,6 +423,7 @@ export const Constants = {
   public: {
     Enums: {
       app_role: ["admin", "creator", "user"],
+      marketplace_kind: ["template", "plugin", "agent"],
     },
   },
 } as const
