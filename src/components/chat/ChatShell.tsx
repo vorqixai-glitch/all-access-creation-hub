@@ -8,7 +8,7 @@ import { Button } from "@/components/ui/button";
 import { Textarea } from "@/components/ui/textarea";
 import { toast } from "sonner";
 import ReactMarkdown from "react-markdown";
-import { Plus, Send, Sparkles, Trash2, Settings, LogOut, MessageSquare } from "lucide-react";
+import { Plus, Send, Sparkles, Trash2, Settings, LogOut, MessageSquare, Puzzle } from "lucide-react";
 import {
   Select, SelectContent, SelectGroup, SelectItem, SelectLabel, SelectTrigger, SelectValue,
 } from "@/components/ui/select";
