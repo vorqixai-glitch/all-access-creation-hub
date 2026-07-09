@@ -7,7 +7,7 @@ import { StarRating } from "@/components/marketplace/StarRating";
 import { KINDS, CATEGORIES, type Kind, type MarketplaceItem } from "@/lib/marketplace";
 import { Sparkles, Plus, Search } from "lucide-react";
 
-export const Route = createFileRoute("/marketplace")({
+export const Route = createFileRoute("/marketplace/")({
   head: () => ({
     meta: [
       { title: "Marketplace — Nexus" },
