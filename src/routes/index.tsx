@@ -26,6 +26,7 @@ function Landing() {
             <span className="font-semibold tracking-tight">Nexus</span>
           </Link>
           <nav className="flex items-center gap-2">
+            <Link to="/skills"><Button variant="ghost" size="sm">Skills</Button></Link>
             <Link to="/marketplace"><Button variant="ghost" size="sm">Marketplace</Button></Link>
             <Link to="/auth"><Button variant="ghost" size="sm">Sign in</Button></Link>
             <Link to="/auth"><Button size="sm">Get started</Button></Link>
